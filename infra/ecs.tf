@@ -22,7 +22,7 @@ resource "aws_ecs_service" "service" {
    load_balancer {
     target_group_arn = aws_alb_target_group.app.id
     container_name   = "node-app"
-    container_port   = 1337
+    container_port   = 80
   }
 }
 
@@ -36,8 +36,8 @@ resource "aws_ecs_task_definition" "td" {
         essential = true
         portMappings = [
             {
-                containerPort = 1337
-                hostPort = 1337
+                containerPort = 80
+                hostPort = 80
             }
         ]
     }
